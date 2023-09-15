@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 function homeLinkComponent(name, icon) {
   var activePage = usePathname().replace("/", "");
@@ -116,7 +117,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="px-3 shadow-md flex items-center justify-between">
+    <div className="px-3 py-1 shadow-md relative flex items-center justify-between bg-white">
       <div className="flex items-center gap-2 min-w-[24rem]">
         <div id="logo" className="">
           <svg
@@ -177,13 +178,13 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 w-[36rem]">
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
         {homeLinks.map(({ name, icon }) => {
           return homeLinkComponent(name, icon);
         })}
       </div>
 
-      <div className="flex gap-2 items-center justify-end min-w-[24rem]">
+      <div className="flex gap-2 items-center justify-end">
         <div className="relative group p-2.5 aspect-square rounded-full bg-gray-200 hover:bg-gray-300 duration-200">
           <span
             class="group-hover:opacity-100 transition-opacity bg-gray-800 p-2 text-xs text-gray-100 rounded-md absolute left-1/2 
@@ -285,15 +286,17 @@ export default function Header() {
         </div>
         <div className="relative group aspect-square rounded-full bg-gray-200 hover:bg-gray-300 duration-200">
           <span
-            class="group-hover:opacity-100 transition-opacity bg-gray-800 p-2 text-xs text-gray-100 rounded-md absolute left-1/2 
-    -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto"
+            class="group-hover:opacity-100 transition-opacity bg-gray-800 p-2 text-xs text-gray-100 rounded-md absolute right-0 
+    translate-y-full opacity-0 m-4 mx-auto"
           >
             Account
           </span>
-          <img
+          <Image
             src="https://placekitten.com/640/640"
             alt=""
-            className="w-9 rounded-full"
+            width={36}
+            height={36}
+            className="rounded-full"
           />
         </div>
       </div>
