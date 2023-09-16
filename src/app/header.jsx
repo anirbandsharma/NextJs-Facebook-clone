@@ -7,6 +7,7 @@ function homeLinkComponent(name, icon) {
   var activePage = usePathname().replace("/", "");
   return (
     <Link
+      key={name}
       href={`/${name == "home" ? "" : name}`}
       className={`flex relative group px-10 py-3 border-b-4 ${
         activePage == name
@@ -118,7 +119,7 @@ export default function Header() {
 
   return (
     <div className="px-3 py-1 shadow-md relative flex items-center justify-between bg-white">
-      <div className="flex items-center gap-2 min-w-[24rem]">
+      <div className="flex items-center gap-2">
         <div id="logo" className="">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +179,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <div className="absolute left-1/2 w-full -translate-x-1/2 flex items-center justify-center px-32 z-1">
         {homeLinks.map(({ name, icon }) => {
           return homeLinkComponent(name, icon);
         })}
